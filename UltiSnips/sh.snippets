@@ -25,8 +25,12 @@ endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
-snippet #! "#!/usr/bin/env (!env)" b
-`!p snip.rv = '#!/usr/bin/env ' + getShell() + "\n" `
+# snippet #! "#!/usr/bin/env (!env)" b
+# `!p snip.rv = '#!/usr/bin/env ' + getShell() + "\n" `
+# endsnippet
+
+snippet bash "shebang" b
+#!/usr/bin/env bash
 endsnippet
 
 snippet sbash "safe bash options" b
@@ -68,6 +72,12 @@ for ${1:i}${2/.+/ in /}${2:words}; do
 done
 endsnippet
 
+snippet fori "Description" b
+for((${1:i}=0; ${1} < ${2:10}; ${1}++)); do
+	echo $${1}
+done
+endsnippet
+
 snippet here "here document (here)"
 <<-${2:'${1:TOKEN}'}
 	$0`echo \\n`${1/['"`](.+)['"`]/$1/}
@@ -93,6 +103,12 @@ endsnippet
 
 snippet /wh(ile)?/ "while ... (done)" rb
 while ${2:[[ ${1:condition} ]]}; do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet while "while ... (done)" rb
+while [[ ${1:condition} ]]; do
 	${0:${VISUAL}}
 done
 endsnippet

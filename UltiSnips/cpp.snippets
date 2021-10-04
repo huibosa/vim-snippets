@@ -30,10 +30,44 @@ endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
+
+snippet incc "include <iostream>" b
+#include <${1:iostream}>
+endsnippet
+
 snippet main
-int main()
-{
-	${0}
+int main() {
+	${1}
+
+	return 0;
+}
+endsnippet
+
+snippet mainn
+int main(int argc, char** argv) {
+	${1}
+
+	return 0;
+}
+endsnippet
+
+snippet cout "print line"
+std::cout << ${VISUAL}$1 << "$2\n";
+endsnippet
+
+snippet cin "print line"
+std::cin >> ${VISUAL}$1;
+endsnippet
+
+snippet ld "lambda function"
+[$1]($2) { return ${3:expression}; }
+endsnippet
+
+snippet lld "long lambda function"
+[$1]($2) {
+	${VISUAL}$3
+
+	return ${4:expression};
 }
 endsnippet
 
@@ -43,33 +77,46 @@ for (${6:auto} ${1:i} = ${2:v.begin()}; `!p import re; snip.rv = re.split("[^\w]
 }
 endsnippet
 
-snippet beginend "$1.begin(), $1.end() (beginend)"
-${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+snippet fore "for each" b
+for (${1:const} auto& ${2:i} : ${3:container}) {
+	${0}
+}
 endsnippet
 
-snippet cl "class .. (class)"
-class ${1:`!p snip.rv = snip.basename or "name"`}
-{
-public:
-	${1/(\w+).*/$1/} (${2:arguments});
-	virtual ~${1/(\w+).*/$1/} ();
+# snippet beginend "$1.begin(), $1.end() (beginend)"
+# ${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+# endsnippet
 
+snippet cl "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`} {
+public:
+	${1/(\w+).*/$1/}() = default;
+	${1/(\w+).*/$1/}(${3:arguments});
+	virtual ~${1/(\w+).*/$1/}();
 private:
-	${0:/* data */}
+	${2:/* data */}
+};
+endsnippet
+
+snippet mfun "member function" b
+$1${2:void} ${3:`!p snip.rv = snip.basename or "name"`}::${4:function_name}($5) ${6: }{
+  ${VISUAL}$0
 };
 endsnippet
 
 snippet ns "namespace .. (namespace)"
-namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
-{
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`} {
 	${VISUAL}$0
 }${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
 endsnippet
 
+snippet default "default initializer"
+default;
+endsnippet
+
 snippet readfile "read file (readF)"
 std::vector<char> v;
-if (FILE *fp = fopen(${1:"filename"}, "r"))
-{
+if (FILE *fp = fopen(${1:"filename"}, "r")) {
 	char buf[1024];
 	while(size_t len = fread(buf, 1, sizeof(buf), fp))
 		v.insert(v.end(), buf, buf + len);
@@ -77,35 +124,53 @@ if (FILE *fp = fopen(${1:"filename"}, "r"))
 }
 endsnippet
 
-snippet map "std::map (map)"
-std::map<${1:key}, ${2:value}> map$0;
+# snippet map "std::map (map)"
+# std::map<${1:key}, ${2:value}> map$0;
+# endsnippet
+# 
+# snippet vector "std::vector (v)"
+# std::vector<${1:char}> v$0;
+# endsnippet
+# 
+# snippet tp "template <typename ..> (template)"
+# template <typename ${1:_InputIter}>
+# endsnippet
+
+snippet msp "STL smart pointers" b
+std::shared_pointer<${1:T}> $2 = std::make_shared<$1>($3);
 endsnippet
 
-snippet vector "std::vector (v)"
-std::vector<${1:char}> v$0;
+snippet amsp "STL smart pointers" b
+auto $1 = std::make_shared<${2:T}>($3);
 endsnippet
 
-snippet tp "template <typename ..> (template)"
-template <typename ${1:_InputIter}>
+snippet mup "STL smart pointers" b
+std::unique_pointer<${1:T}> $2 = std::make_unique<$1>($3);
+endsnippet
+
+snippet amup "STL smart pointers" b
+auto $1 = std::make_unique<${2:T}>($3);
+endsnippet
+
+snippet amp "pair" b
+auto $1 = std::make_pair<${2:T1}, ${3:T2}>($4);
 endsnippet
 
 snippet cla "An entire .h generator" b
 #ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
 #define $2
 
-class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
-{
-private:
-	$3
-
+class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`} {
 public:
-	$1();
+	$1() ${3:= default};
 	virtual ~$1();
+
+private:
+	$4
 };
 
 #endif /* $2 */
 endsnippet
-
 
 snippet fnc "Basic c++ doxygen function template" b
 /**
@@ -114,8 +179,7 @@ snippet fnc "Basic c++ doxygen function template" b
 * @param: `!p write_docstring_args(t[3],snip)`
 *
 * @return: `!p snip.rv = t[1]`
-*/
-${1:ReturnType} ${2:FunctionName}(${3:param})
+*/ ${1:ReturnType} ${2:FunctionName}(${3:param})
 {
 	${0:FunctionBody}
 }
@@ -146,6 +210,7 @@ BOOST_AUTO_TEST_CASE(${3:TestCaseName})
 BOOST_AUTO_TEST_SUITE_END()
 
 endsnippet
+
 snippet boost_test_fixture "Boost test module with fixture" b
 #define BOOST_TEST_MODULE ${1:TestModuleName}
 #include <boost/test/included/unit_test.hpp>
