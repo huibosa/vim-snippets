@@ -77,7 +77,7 @@ for (${6:auto} ${1:i} = ${2:v.begin()}; `!p import re; snip.rv = re.split("[^\w]
 }
 endsnippet
 
-snippet fore "for each" b
+snippet forin "for each" b
 for (${1:const} auto& ${2:i} : ${3:container}) {
 	${0}
 }
@@ -154,6 +154,12 @@ endsnippet
 
 snippet amp "pair" b
 auto $1 = std::make_pair<${2:T1}, ${3:T2}>($4);
+endsnippet
+
+snippet mt19937 "uniform distributed random number" b
+std::random_device rand_dev;
+std::mt19937 generator(rand_dev());
+std::uniform_int_distribution<int> distr(${1:floor}, ${2:ceil});
 endsnippet
 
 snippet cla "An entire .h generator" b

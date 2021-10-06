@@ -29,11 +29,11 @@ endglobal
 # `!p snip.rv = '#!/usr/bin/env ' + getShell() + "\n" `
 # endsnippet
 
-snippet bash "shebang" b
+snippet shebang "shebang" b
 #!/usr/bin/env bash
 endsnippet
 
-snippet sbash "safe bash options" b
+snippet sshebang "safe bash options" b
 #!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
@@ -114,7 +114,7 @@ done
 endsnippet
 
 snippet func "function() {...}" b
-${1:function} () {
+function ${1:fun}() {
 	${0:${VISUAL}}
 }
 endsnippet
