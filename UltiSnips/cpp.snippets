@@ -71,9 +71,15 @@ snippet lld "long lambda function"
 }
 endsnippet
 
-snippet forc "general for loop (for)"
-for (${6:auto} ${1:i} = ${2:v.begin()}; `!p import re; snip.rv = re.split("[^\w]",t[1])[-1]` ${4:!=} ${3:`!p m = re.search(r'^(?:(.*)(\.|->)begin\(\)|((?:std|boost)::)?begin\((.*)\))$', t[2]); snip.rv = (((m.group(3) if m.group(3) else "") + "end(" + m.group(4) + ")") if m.group(4) else (m.group(1) + m.group(2) + "end()")) if m else ""`}; ${5:++`!p snip.rv = t[1].split(" ")[-1]`}) {
-	${VISUAL}$0
+# snippet forc "general for loop (for)"
+# for (${6:auto} ${1:i} = ${2:v.begin()}; `!p import re; snip.rv = re.split("[^\w]",t[1])[-1]` ${4:!=} ${3:`!p m = re.search(r'^(?:(.*)(\.|->)begin\(\)|((?:std|boost)::)?begin\((.*)\))$', t[2]); snip.rv = (((m.group(3) if m.group(3) else "") + "end(" + m.group(4) + ")") if m.group(4) else (m.group(1) + m.group(2) + "end()")) if m else ""`}; ${5:++`!p snip.rv = t[1].split(" ")[-1]`}) {
+# 	${VISUAL}$0
+# }
+# endsnippet
+
+snippet forc "for container loop" b
+for (${4:auto} ${1:iter} = ${2:c.begin()}; ${1:iter} != ${3:c.end()}; ++${1:iter}) {
+	${0}
 }
 endsnippet
 
@@ -99,7 +105,7 @@ private:
 endsnippet
 
 snippet mfun "member function" b
-$1${2:void} ${3:`!p snip.rv = snip.basename or "name"`}::${4:function_name}($5) ${6: }{
+${1:void} ${2:`!p snip.rv = snip.basename or "name"`}::${3:function_name}($4) ${5:const}{
   ${VISUAL}$0
 };
 endsnippet
