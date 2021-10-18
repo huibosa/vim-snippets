@@ -52,11 +52,11 @@ int main(int argc, char** argv) {
 endsnippet
 
 snippet cout "print line"
-std::cout << ${VISUAL}$1 << "$2\n";
+std::cout << ${VISUAL}$1 << "\n"$0
 endsnippet
 
 snippet cin "print line"
-std::cin >> ${VISUAL}$1;
+std::cin >> ${VISUAL}$0
 endsnippet
 
 snippet ld "lambda function"
@@ -104,8 +104,8 @@ private:
 };
 endsnippet
 
-snippet mfun "member function" b
-${1:void} ${2:`!p snip.rv = snip.basename or "name"`}::${3:function_name}($4) ${5:const}{
+snippet mfun "member function"
+${1:void} ${2:`!p snip.rv = snip.basename or "name"`}::${3:function_name}($4) {
   ${VISUAL}$0
 };
 endsnippet
