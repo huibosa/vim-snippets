@@ -108,7 +108,7 @@ else if (${1:/* condition */}) {
 endsnippet
 
 snippet cond "conditional operator"
-(${1:expr} ? ${2:True} : ${3:False})
+(${1:${VISUAL}} ? ${2:True} : ${3:False})
 endsnippet
 
 post_jump "printf_expand_args(snip)"
