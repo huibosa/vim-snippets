@@ -60,8 +60,8 @@ elif ${2:[[ ${1:condition} ]]}; then
 	${0:${VISUAL}}
 endsnippet
 
-snippet for "for ... done (for)" b
-for (( i = 0; i < ${1:10}; i++ )); do
+snippet fori "for ... done (for)" b
+for ((i = 0; i < ${1:10}; i++)); do
 	${0:${VISUAL}}
 done
 endsnippet
@@ -72,25 +72,13 @@ for ${1:i}${2/.+/ in /}${2:words}; do
 done
 endsnippet
 
-snippet fori "Description" b
-for((${1:i}=0; ${1} < ${2:10}; ${1}++)); do
-	echo $${1}
-done
-endsnippet
-
 snippet here "here document (here)"
 <<-${2:'${1:TOKEN}'}
 	$0`echo \\n`${1/['"`](.+)['"`]/$1/}
 endsnippet
 
-snippet /ift(est)?/ "if ... then (if)" rb
-if ${2:[ ${1:condition} ]}; then
-	${0:${VISUAL}}
-fi
-endsnippet
-
-snippet if "if ... then (if)" b
-if [[ ${1:condition} ]]; then
+snippet /if/ "if ... then (if)" rb
+if ${2:[[ ${1:condition} ]]}; then
 	${0:${VISUAL}}
 fi
 endsnippet
