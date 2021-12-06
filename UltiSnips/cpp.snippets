@@ -31,7 +31,7 @@ endglobal
 #                            TextMate Snippets                            #
 ###########################################################################
 
-snippet incc "include <iostream>" b
+snippet inc "include <iostream>" b
 #include <${1:iostream}>
 endsnippet
 
@@ -171,9 +171,8 @@ auto $1 = std::make_pair($4);
 endsnippet
 
 snippet mt19937 "uniform distributed random number" b
-std::random_device rand_dev;
-std::mt19937 generator(rand_dev());
-std::uniform_int_distribution<int> distr(${1:floor}, ${2:ceil});
+std::random_device rd;
+std::mt19937 gen(rd());
 endsnippet
 
 snippet cla "An entire .h generator" b
