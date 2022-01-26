@@ -50,7 +50,7 @@ endsnippet
 
 snippet #if "#if #endif" b
 #if ${1:0}
-${VISUAL}$0
+${VISUAL:0}
 #endif
 endsnippet
 
@@ -65,7 +65,7 @@ endsnippet
 
 snippet main "main(void) (main)"
 int main(void) {
-	${VISUAL}$0
+	$0
 
 	return 0;
 }
@@ -73,7 +73,7 @@ endsnippet
 
 snippet mainn "main(...) (main)"
 int main(int argc, char** argv) {
-	${VISUAL}$0
+	$0
 
 	return 0;
 }
