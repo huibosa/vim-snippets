@@ -4,6 +4,213 @@ priority -50
 # MATH STUFF #
 ##############
 
+snippet thm "Theorem" b
+\begin{theorem}
+	$1
+\end{theorem}
+
+endsnippet
+
+snippet proof "Proof" b
+\begin{proof}
+	$1
+\end{proof}
+
+endsnippet
+
+snippet sketch "Sketch of proof" b
+\begin{proof}[Sketch of proof]
+	$1
+\end{proof}
+
+endsnippet
+
+snippet cor "Corollary" b
+\begin{corollary}
+	$1
+\end{corollary}
+
+endsnippet
+
+snippet lmm "Lemma" b
+\begin{lemma}
+	$1
+\end{lemma}
+
+endsnippet
+
+snippet prop "Proposition" b
+\begin{proposition}
+	$1
+\end{proposition}
+endsnippet
+
+
+snippet def "Definition" b
+\begin{definition}
+	$1
+\end{definition}
+
+endsnippet
+
+snippet remark "Remark" b
+\begin{remark}
+	$1
+\end{remark}
+
+endsnippet
+
+snippet example "Example" b
+\begin{example}
+	$1
+\end{example}
+
+endsnippet
+
+snippet exercise "Exercise" b
+\begin{exercise}
+	$1
+\end{exercise}
+
+endsnippet
+
+snippet solution "Solution" b
+\begin{solution}
+	$1
+\end{solution}
+
+endsnippet
+
+snippet question "Question" b
+\begin{question}
+	$1
+\end{question}
+
+endsnippet
+
+snippet problem "Problem" b
+\begin{problem}
+	$1
+\end{problem}
+
+endsnippet
+
+snippet update "Update" b
+\begin{update}
+	$1
+\end{update}
+
+endsnippet
+
+snippet parbox "parbox" b
+\parbox{$1}{$2}
+endsnippet
+
+snippet fbox "parbox" b
+\fbox{$1}
+endsnippet
+
+snippet boxed "parbox" b
+\boxed{$1}
+endsnippet
+
+snippet norm "Norm" w
+\norm{$1}
+endsnippet
+
+snippet lim "Limit" w
+\lim_{${1:n\to \infty}}
+endsnippet
+
+snippet int "Integral" w
+\int_{${1:0}}^{${2:\infty}}
+endsnippet
+
+snippet sum "Sum" w
+\sum_{${1:n=0}}^{${2:\infty}}
+endsnippet
+
+snippet prod "Product" w
+\prod_{${1:1}}^{${2:\infty}}
+endsnippet
+
+snippet frac "Fraction" w
+\frac{${1:${VISUAL:1}}}{${2:n}}
+endsnippet
+
+snippet sqrt "Sqrt" w
+\sqrt{${1}}
+endsnippet
+
+snippet "mat(rix)?" "Smart Matrix" i
+\begin{${1:p/b/v/V/B/small}matrix}
+	$2
+\end{$1matrix}
+endsnippet
+
+snippet "matinline" "Smart Matrix Inline" i
+\begin{${1:p/b/v/V/B/small}matrix} $2 \end{$1matrix}
+endsnippet
+
+snippet eq "Equation" w
+\begin{equation}
+	$1
+\end{equation}
+
+endsnippet
+
+snippet eq* "Equation without numbering" w
+\begin{equation*}
+	$1
+\end{equation*}
+
+endsnippet
+
+snippet split "Split" w
+\begin{split}
+	$1
+\end{split}
+endsnippet
+
+snippet flalign* "flush left align (no label)" w
+\begin{flalign*}
+	$1
+\end{flalign*}
+endsnippet
+
+snippet flalign "flush left align (no label)" w
+\begin{flalign}
+	$1
+\end{flalign}
+endsnippet
+
+snippet align "Align" w
+\begin{align}
+	$1
+\end{align}
+endsnippet
+
+snippet align* "Align without numbering" w
+\begin{align*}
+	$1
+\end{align*}
+
+endsnippet
+
+snippet cases "Cases" w
+\begin{cases}
+	$1	\\\\
+	$2
+\end{cases}
+endsnippet
+
+endsnippet
+
+# Not use
+snippet par "partial" i
+\partial
+endsnippet
+
 snippet eqnn "Equation without a number" b
 \begin{equation*}
 	${0:${VISUAL}}
