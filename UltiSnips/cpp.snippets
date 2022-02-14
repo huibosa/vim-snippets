@@ -113,7 +113,7 @@ private:
 endsnippet
 
 snippet mfun "member function"
-${1:void} ${2:`!p snip.rv = snip.basename or "name"`}::${3:function_name}($4) {
+${1:void} ${2:`!p snip.rv = snip.basename or "name"`}::${3:function_name}($4)${5/(.+)/ /}${5:const} {
   ${VISUAL}$0
 }
 endsnippet
