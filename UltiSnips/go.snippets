@@ -11,8 +11,16 @@ import (
 )
 endsnippet
 
-snippet forin "for range loop" b
-for ${1:_}, ${2:value} := range ${3:values} {
+snippet fp "fmt.Println" b
+fmt.Println($1:)
+endsnippet
+
+snippet fp "fmt.Printf" b
+fmt.Printf($1:)
+endsnippet
+
+snippet forr "for range loop" b
+for ${1:_}, ${2:v} := range ${3:values} {
 	${VISUAL}$0
 }
 endsnippet
@@ -45,14 +53,20 @@ const (
 )
 endsnippet
 
-snippet struct "Struct declaration" b
+snippet tys "type struct declaration" b
 type ${1:Struct} struct {
 	${0:${VISUAL}}
 }
 endsnippet
 
-snippet interface "Interface declaration" b
+snippet tyi "type interface declaration" b
 type ${1:Interface} interface {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet tyf "type function declaration" b
+type ${1:Func} func {
 	${0:${VISUAL}}
 }
 endsnippet
@@ -70,7 +84,7 @@ case$0
 endsnippet
 
 # functions
-snippet /^main/ "Main function" r
+snippet /^fmain/ "Main function" r
 func main() {
 	${0:${VISUAL}}
 }

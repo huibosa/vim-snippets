@@ -66,7 +66,7 @@ for ((i = 0; i < ${1:10}; i++)); do
 done
 endsnippet
 
-snippet forin "for ... in ... done (forin)" b
+snippet forr "for ... in ... done (forin)" b
 for ${1:i}${2/.+/ in /}${2:words}; do
 	${0:${VISUAL}}
 done
