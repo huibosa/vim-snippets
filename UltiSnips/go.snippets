@@ -12,15 +12,15 @@ import (
 endsnippet
 
 snippet fp "fmt.Println" b
-fmt.Println($1:)
+fmt.Println($1)
 endsnippet
 
-snippet fp "fmt.Printf" b
-fmt.Printf($1:)
+snippet ff "fmt.Printf" b
+fmt.Printf($1)
 endsnippet
 
 snippet forr "for range loop" b
-for ${1:_}, ${2:v} := range ${3:values} {
+for ${1:expression} := range ${2:values} {
 	${VISUAL}$0
 }
 endsnippet
