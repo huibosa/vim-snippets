@@ -56,7 +56,7 @@ esac
 endsnippet
 
 snippet elif "elif .. (elif)" b
-elif ${2:[[ ${1:condition} ]]}; then
+elif ${1:condition}; then
 	${0:${VISUAL}}
 endsnippet
 
@@ -78,25 +78,19 @@ snippet here "here document (here)"
 endsnippet
 
 snippet /if/ "if ... then (if)" rb
-if ${2:[[ ${1:condition} ]]}; then
+if ${1:condition}; then
 	${0:${VISUAL}}
 fi
 endsnippet
 
 snippet until "until ... (done)" b
-until ${2:[[ ${1:condition} ]]}; do
-	${0:${VISUAL}}
-done
-endsnippet
-
-snippet /wh(ile)?/ "while ... (done)" rb
-while ${2:[[ ${1:condition} ]]}; do
+until ${1:condition}; do
 	${0:${VISUAL}}
 done
 endsnippet
 
 snippet while "while ... (done)" rb
-while ${2:[[ ${1:condition} ]]}; do
+while ${1:condition}; do
 	${0:${VISUAL}}
 done
 endsnippet
