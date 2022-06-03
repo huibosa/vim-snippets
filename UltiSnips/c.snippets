@@ -120,6 +120,18 @@ snippet "printf" "printf with auto-expand args" wr
 printf("$1\n"$2);
 endsnippet
 
+snippet tys "typedef struct" b
+typedef struct {
+  ${0:data}
+} ${1:name};
+endsnippet
+
+snippet tye "typedef enum" b
+typedef enum {
+  ${0:data}
+} ${1:name};
+endsnippet
+
 snippet st "struct"
 struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
 	${0:/* data */}
